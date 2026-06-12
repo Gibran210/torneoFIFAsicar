@@ -190,7 +190,6 @@ body {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-
 /* ════════════════════════════════════════════
    MAIN LAYOUT
 ════════════════════════════════════════════ */
@@ -629,4 +628,76 @@ body {
   .header-logo-name { font-size: 14px; }
   .header-logo-sub  { display: none; }
   .header-price { padding: 5px 10px; }
+}
+
+/* ════════════════════════════════════════════
+   STADIUM BACKGROUND
+════════════════════════════════════════════ */
+.bg-stadium {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes starTwinkle {
+  0%,100% { opacity: .2; }
+  50%      { opacity: .8; }
+}
+
+@keyframes lightFlicker {
+  0%,100% { opacity: .06; }
+  50%      { opacity: .12; }
+}
+
+@keyframes fieldGlow {
+  0%,100% { opacity: .6; transform: scaleX(1);   }
+  50%      { opacity: 1;  transform: scaleX(1.05); }
+}
+
+/* ════════════════════════════════════════════
+   CONTROLLER
+════════════════════════════════════════════ */
+.hero-ctrl-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.hero-ctrl-svg {
+  width: 200px;
+  height: auto;
+  animation: ctrlFloat 3s ease-in-out infinite, ctrlRotate 6s ease-in-out infinite;
+  filter: drop-shadow(0 8px 24px rgba(0,100,255,.35));
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes ctrlFloat {
+  0%,100% { transform: translateY(0)    rotate(-2deg); }
+  50%      { transform: translateY(-12px) rotate(2deg);  }
+}
+
+@keyframes ctrlRotate {
+  0%,100% { filter: drop-shadow(0 8px 24px rgba(0,100,255,.35)); }
+  50%      { filter: drop-shadow(0 12px 32px rgba(0,176,255,.5)); }
+}
+
+.hero-ctrl-aura {
+  position: absolute;
+  width: 180px; height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(0,100,255,.15), transparent 70%);
+  bottom: -20px; left: 50%; transform: translateX(-50%);
+  animation: auraBreath 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes auraBreath {
+  0%,100% { opacity: .5; transform: translateX(-50%) scaleX(1);   }
+  50%      { opacity: 1;  transform: translateX(-50%) scaleX(1.15); }
 }

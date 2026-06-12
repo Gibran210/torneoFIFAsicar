@@ -12,9 +12,10 @@ export default function Header({ playerCount, onOpenPanel }) {
       </div>
 
       <div className="header-right">
-      
-      <img src="/logo/logo.png" alt="Logo"
+        <img src="/logo/logo.png" alt="Logo"
           style={{ height:52, width:'auto', objectFit:'contain' }} />
+
+
         {/* Botón inscritos */}
         <button className="header-panel-btn" onClick={onOpenPanel}>
           <div className="header-btn-dot" />
