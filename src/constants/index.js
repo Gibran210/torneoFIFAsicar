@@ -16,6 +16,7 @@ export const FLAGS = [
 export const DEPTOS = [
   { value: 'Desarrollo', label: 'Desarrollo', icon: '💻', sub: 'Dev · Frontend · Backend' },
   { value: 'Soporte',    label: 'Soporte',    icon: '🎧', sub: 'Help Desk · Técnico'      },
+ { value: 'Ventas',     label: 'Ventas',     icon: '📈', sub: 'Comercial · CRM'          },
   { value: 'Logística',  label: 'Logística',  icon: '🚚', sub: 'Envíos · Almacén'         },
 ]
 

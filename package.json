@@ -1,8 +1,21 @@
 {
+  "name": "mundial-2026",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "npx vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
+    "@lottiefiles/dotlottie-react": "^0.19.2",
+    "@lottiefiles/react-lottie-player": "^3.6.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "vite": "^5.4.2",
-    "@vitejs/plugin-react": "^4.3.1"
+    "react-router-dom": "^7.16.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.1",
+    "vite": "^8.0.12"
   }
 }
