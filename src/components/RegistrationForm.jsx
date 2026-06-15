@@ -89,7 +89,7 @@ export default function RegistrationForm({
             <input
               className="f-inp"
               type="text"
-              placeholder="Ej. Lionel Messi"
+              placeholder="Ej. La Chacamota González"
               value={name}
               onChange={e => { setName(e.target.value); setErrors(r => ({ ...r, name:'' })) }}
               onKeyDown={e => e.key === 'Enter' && handleSubmit()}
