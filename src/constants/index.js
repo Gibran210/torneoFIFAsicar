@@ -20,4 +20,10 @@ export const DEPTOS = [
   { value: 'Logística',  label: 'Logística',  icon: '🚚', sub: 'Envíos · Almacén'         },
 ]
 
+export const CONSOLAS = [
+  { value: 'Xbox',       label: 'Xbox',       icon: '🟢' },
+  { value: 'PS5',        label: 'PS5',        icon: '🔵'},
+  { value: 'Ambas', label: 'Cualquier consola', icon: '🎮'},
+]
+
 export const CONFETTI_COLORS = ['#0057e7','#00b0ff','#00e5ff','#ffffff','#7b2fff']

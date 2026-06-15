@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { DEPTOS } from '../constants'
+import { DEPTOS, CONSOLAS } from '../constants'
 
 export default function RegistrationForm({
   players, loadStatus, saveStatus, isEmailTaken, savePlayer, onSuccess
@@ -7,10 +7,12 @@ export default function RegistrationForm({
   const [name,   setName]   = useState('')
   const [email,  setEmail]  = useState('')
   const [depto,  setDepto]  = useState('')
+  const [consola, setConsola] = useState('')
   const [errors, setErrors] = useState({})
 
   const isLoading = loadStatus === 'loading'
   const isSaving  = saveStatus === 'saving'
+  
 
   const validate = () => {
     const errs = {}
@@ -23,6 +25,7 @@ export default function RegistrationForm({
       errs.email = '¡Este correo ya está registrado!'
     }
     if (!depto) errs.depto = 'Selecciona un departamento'
+    if (!consola) errs.consola = 'Selecciona una consola'
     return errs
   }
 
@@ -32,8 +35,8 @@ export default function RegistrationForm({
     if (Object.keys(errs).length > 0) return
 
     try {
-      const player = await savePlayer({ name: name.trim(), email: email.trim(), depto })
-      setName(''); setEmail(''); setDepto(''); setErrors({})
+      const player = await savePlayer({ name: name.trim(), email: email.trim(), depto, consola })
+      setName(''); setEmail(''); setDepto(''); setConsola(''); setErrors({})
       onSuccess(player)
     } catch (err) {
       if (err?.message === 'EMAIL_DUPLICADO') {
@@ -122,6 +125,10 @@ export default function RegistrationForm({
         <FieldGroup label="Departamento" error={errors.depto}>
           <DeptoSelect value={depto} onChange={v => { setDepto(v); setErrors(r => ({ ...r, depto:'' })) }} />
         </FieldGroup>
+
+        <FieldGroup label="Consola de preferencia" error={errors.consola}>
+  <ConsolaSelect value={consola} onChange={v => { setConsola(v); setErrors(r => ({ ...r, consola:'' })) }} />
+</FieldGroup>
 
         {/* Botón */}
         <button
@@ -218,6 +225,57 @@ function DeptoSelect({ value, onChange }) {
                 <div className="depto-option-sub">{d.sub}</div>
               </div>
               {value === d.value && (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00b0ff" strokeWidth="2.5" strokeLinecap="round">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function ConsolaSelect({ value, onChange }) {
+  const [open, setOpen] = useState(false)
+  const sel = CONSOLAS.find(c => c.value === value)
+
+  return (
+    <div style={{ position: 'relative' }}>
+      <div
+        className={`f-field depto-trigger${open ? ' active' : ''}`}
+        onClick={() => setOpen(o => !o)}
+      >
+        <div className="f-prefix">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="2" y="6" width="20" height="14" rx="3"/>
+            <path d="M8 10h2M9 9v2M15 10h.01M17 10h.01"/>
+          </svg>
+        </div>
+        <span className={`f-inp depto-val${!value ? ' placeholder' : ''}`}>
+          {sel ? `${sel.icon} ${sel.label}` : 'Selecciona tu consola…'}
+        </span>
+        <svg className={`depto-chev${open ? ' open' : ''}`} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(0,176,255,.5)" strokeWidth="2.5" strokeLinecap="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+        <div className="f-scan" />
+      </div>
+
+      {open && (
+        <div className="depto-dropdown">
+          {CONSOLAS.map(c => (
+            <div
+              key={c.value}
+              className={`depto-option${value === c.value ? ' selected' : ''}`}
+              onClick={() => { onChange(c.value); setOpen(false) }}
+            >
+              <span className="depto-option-icon">{c.icon}</span>
+              <div>
+                <div className="depto-option-label">{c.label}</div>
+                <div className="depto-option-sub">{c.sub}</div>
+              </div>
+              {value === c.value && (
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00b0ff" strokeWidth="2.5" strokeLinecap="round">
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>

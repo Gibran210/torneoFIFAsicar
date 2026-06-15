@@ -34,11 +34,11 @@ export function useSheets() {
     ), [])
 
   // ── Guardar jugador ──────────────────────────────────────
-  const savePlayer = useCallback(async ({ name, email, depto }) => {
+  const savePlayer = useCallback(async ({ name, email, depto, consola  }) => {
     setSaveStatus('saving')
     try {
       if (SHEET_READY) {
-        const params = new URLSearchParams({ method:'POST', name, email, depto })
+        const params = new URLSearchParams({ method:'POST', name, email, depto, consola })
         const res    = await fetch(`/api/sheets?${params}`)
         const data   = await res.json()
         if (!data?.success) {
@@ -47,7 +47,7 @@ export function useSheets() {
         }
       }
       const player = {
-        name, email, depto,
+        name, email, depto, consola,
         number: playersRef.current.length + 1,
         fecha:  new Date().toLocaleString('es-MX'),
       }
