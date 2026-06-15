@@ -30,7 +30,7 @@ export default function PlayersPanel({ open, players, loadStatus, onClose, onRef
           {loadStatus === 'loading' && (
             <div className="panel-loading">
               <div className="panel-spinner" />
-              <p>Cargando desde Google Sheets…</p>
+              <p>Cargando...</p>
             </div>
           )}
 
@@ -55,7 +55,6 @@ export default function PlayersPanel({ open, players, loadStatus, onClose, onRef
     '🎮 Cualquiera'
   }</span>}
 </div>
-                {p.fecha && <div className="p-date">📅 {p.fecha}</div>}
               </div>
               <div className="p-num">#{String(p.number || '').padStart(2, '0')}</div>
             </div>
