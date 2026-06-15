@@ -12,7 +12,6 @@ export default function PlayersPanel({ open, players, loadStatus, onClose, onRef
         <div className="panel-top">
           <div className="panel-accent" />
           <button className="panel-close" onClick={onClose}>✕</button>
-          <div className="panel-eye">Convocatoria · Google Sheets</div>
           <div className="panel-title">Inscritos</div>
           <button
             className={`panel-refresh${loadStatus === 'loading' ? ' spinning' : ''}`}
