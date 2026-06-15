@@ -41,7 +41,7 @@ export default function PlayersPanel({ open, players, loadStatus, onClose, onRef
             </div>
           )}
 
-          {[...players].reverse().map((p, i) => (
+          {players.map((p, i) => (
             <div key={p.email + i} className="p-item">
               <div className="p-av">{initials(p.name)}</div>
               <div className="p-info">
