@@ -48,13 +48,13 @@ export default function PlayersPanel({ open, players, loadStatus, onClose, onRef
                 <div className="p-name">{p.name}</div>
                 <div className="p-email">{p.email}</div>
                 <div className="p-tags">
-                  {p.depto && <span className="p-tag depto">{p.depto}</span>}
-                  {p.consola && <span className="p-tag consola">{
+  {p.depto   && <span className="p-tag depto">{p.depto}</span>}
+  {p.consola && <span className="p-tag consola">{
     p.consola === 'Xbox'      ? '🟢 Xbox' :
     p.consola === 'PS5'       ? '🔵 PS5'  :
     '🎮 Cualquiera'
   }</span>}
-                </div>
+</div>
                 {p.fecha && <div className="p-date">📅 {p.fecha}</div>}
               </div>
               <div className="p-num">#{String(p.number || '').padStart(2, '0')}</div>
