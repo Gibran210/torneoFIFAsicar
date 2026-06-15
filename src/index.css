@@ -701,3 +701,9 @@ body {
   0%,100% { opacity: .5; transform: translateX(-50%) scaleX(1);   }
   50%      { opacity: 1;  transform: translateX(-50%) scaleX(1.15); }
 }
+
+.p-tag.consola {
+  background: rgba(123,47,255,.12);
+  border: 1px solid rgba(123,47,255,.25);
+  color: #a78bfa;
+}

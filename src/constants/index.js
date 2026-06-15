@@ -21,9 +21,9 @@ export const DEPTOS = [
 ]
 
 export const CONSOLAS = [
-  { value: 'Xbox',       label: 'Xbox',       icon: '🟢' },
-  { value: 'PS5',        label: 'PS5',        icon: '🔵'},
-  { value: 'Ambas', label: 'Cualquier consola', icon: '🎮'},
+  { value: 'Xbox',      label: 'Xbox',      icon: '🟢', sub: 'Xbox Series X/S' },
+  { value: 'PS5',       label: 'PS5',       icon: '🔵', sub: 'PlayStation 5'   },
+  { value: 'Cualquiera',label: 'Cualquiera',icon: '🎮', sub: 'Cualquier consola'      },
 ]
 
 export const CONFETTI_COLORS = ['#0057e7','#00b0ff','#00e5ff','#ffffff','#7b2fff']
